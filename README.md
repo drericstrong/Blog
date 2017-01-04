@@ -1,5 +1,5 @@
 # Blog
-A collection of resources from [ericstrong.org/Blog/](ericstrong.org/Blog/). Files within this directory are licensed under GNU AGPLv3. Please cite this work using the following format:
+A collection of resources from [http://www.ericstrong.org/Blog/](http://www.ericstrong.org/Blog/). Files within this directory are licensed under GNU AGPLv3. Please cite this work using the following format:
 
 **Strong, E., Blog, (2017), Github repository, https://github.com/drericstrong/Blog**
 
