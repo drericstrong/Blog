@@ -37,3 +37,9 @@ A collection of resources from [http://www.ericstrong.org/Blog/](http://www.eric
   
 * Statistics
   * [20161220_Dice Advantage and Disadvantage- Statistical Analysis of Max, Min of 20-Sided Data](https://github.com/drericstrong/Blog/blob/master/20161220_Dice%20Advantage%20and%20Disadvantage.ipynb), [Blog](http://ericstrong.org/dice-advantage-and-disadvantage/)
+  * [20161228_Point Buy Vs. Random Rolls- Visualization of Distributions from Dice-Rolling Algorithms](https://github.com/drericstrong/Blog/blob/master/20161228_PointBuyVsRandomRolls.ipynb), [Blog](http://ericstrong.org/point-buy-vs-random-rolls/)
+  * [20161229_Point Buy Vs. Random Rolls Part 2- Visualization of Distributions from Dice-Rolling Algorithms](https://github.com/drericstrong/Blog/blob/master/20161229_PointBuyVsRandomRollsPart2.ipynb), [Blog](http://ericstrong.org/point-buy-vs-random-rolls-part-2/)
+  * [20170119_Point Buy Vs. Random Rolls Part 3- Visualization of Distributions from Dice-Rolling Algorithms](https://github.com/drericstrong/Blog/blob/master/20170119_PointBuyVsRandomRollsPart3.ipynb), [Blog](http://ericstrong.org/point-buy-vs-random-rolls-part-3/)
+  * [20170119_Point Buy Vs. Random Rolls Part 4- Visualization of Distributions from Dice-Rolling Algorithms](https://github.com/drericstrong/Blog/blob/master/20170119_PointBuyVsRandomRollsPart4.ipynb), [Blog](http://ericstrong.org/point-buy-vs-random-rolls-part-4/)
+  * [20170119_Visualizing Dice Distributions- Visualization of Distributions from Dice-Rolling Algorithms](https://github.com/drericstrong/Blog/blob/master/20170119_Visualizing%20Dice%20Distributions.ipynb), [Blog](http://ericstrong.org/visualizing-dice-distributions/)
+  
