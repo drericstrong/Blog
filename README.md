@@ -15,7 +15,10 @@ A collection of resources from [http://www.ericstrong.org/Blog/](http://www.eric
   * [20161018_TimeAligning2- Consequences of Improperly Preprecessing Time Series Data](https://github.com/drericstrong/Blog/blob/master/20161018_TimeAligning2.ipynb), [Blog](http://ericstrong.org/time-aligning-part-2-markov-simulation/)
   * [20161024_TimeAligning3- Correct Preprocessing Algorithm](https://github.com/drericstrong/Blog/blob/master/20161018_TimeAligning2.ipynb), [Blog](http://ericstrong.org/time-aligning-part-3-preprocessing-algorithm/)
   * [20161102_VLOOKUPAndApproximateMatch- Tips for Using VLOOKUP in Excel](https://github.com/drericstrong/Blog/blob/master/20161102_VLOOKUPAndApproximateMatch.xlsx), [Blog](http://ericstrong.org/vlookup-and-approximate-match/)
-  
+
+* Fuzzy Logic
+  * [20170204_FuzzyLogicLinearGaussian- Exploring Fuzzy Logic](https://github.com/drericstrong/Blog/blob/master/20170204_FuzzyLogicLinearGaussian.ipynb), [Blog](http://ericstrong.org/fuzzy-logic-with-triangular-and-gaussian-membership-functions/)
+
 * Management
   * [20161025_DataScienceLessonsLearnedRegister- Example of a Lessons Learned Register](https://github.com/drericstrong/Blog/blob/master/20161025_DataScienceLessonsLearnedRegister.xlsx), [Blog](http://ericstrong.org/98-2/)
   
