@@ -39,7 +39,7 @@ A collection of resources from [http://www.ericstrong.org/Blog/](http://www.eric
   * [20161207_AbalonePart1- Multiple Regression Models with Abalone Dataset](https://github.com/drericstrong/Blog/blob/master/20161207_AbalonePart1.ipynb), [Blog](http://ericstrong.org/predicting-abalone-rings-part-1/)
   
 * Signal Processing
- * [20170106_DQ0 Transform In Python- Including Analysis of a Normal 3-Phase Voltage Signal](https://github.com/drericstrong/Blog/blob/master/20170106_DQ0TransformInPython.ipynb), [Blog](http://ericstrong.org/dq0-transform-in-python/)
+  * [20170106_DQ0 Transform In Python- Including Analysis of a Normal 3-Phase Voltage Signal](https://github.com/drericstrong/Blog/blob/master/20170106_DQ0TransformInPython.ipynb), [Blog](http://ericstrong.org/dq0-transform-in-python/)
   
 * Statistics
   * [20161220_Dice Advantage and Disadvantage- Statistical Analysis of Max, Min of 20-Sided Data](https://github.com/drericstrong/Blog/blob/master/20161220_Dice%20Advantage%20and%20Disadvantage.ipynb), [Blog](http://ericstrong.org/dice-advantage-and-disadvantage/)
