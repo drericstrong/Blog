@@ -1,0 +1,93 @@
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Support for 7zip files in Python is limited. Although pandas and other data processing libraries have the ability to directly read gzip and bz2 files, some of the compression algorithms used by 7zip are not well supported by available Python modules. Regardless, the ability to call 7zip from the command line does have some use cases.</p>
+<p>(Note that the <a href="https://docs.python.org/3/library/lzma.html">lzma module</a> in the standard library may already be a solution to many problems and should be tried first)</p>
+<p>First, let's try creating a sample 7z file using the command line. The <em>subprocess</em> module in the standard library is one way to call the 7zip program directly, as if it were on the command line. This code will write to a temporary directory in C:\Temp and assumes that you are using Windows. Please modify the temp_dir accordingly if you are using another operating system. Also, please modify the exact location of 7zip on your system using the loc_7z variable. Alternatively, if the 7zip location has been added to the system path, you may just use "7z" or "7z.exe".</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">temp_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Temp&quot;</span>
+<span class="n">loc_7z</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Program Files\7-Zip\7z.exe&quot;</span>
+<span class="c1"># Where the final 7z file will be written</span>
+<span class="n">dummy_out_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">,</span> <span class="s2">&quot;dummy.7z&quot;</span><span class="p">)</span>
+
+<span class="c1"># If this directory does not exist, it will need to be created</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">)</span>
+    
+<span class="c1"># Create a dummy file that is roughly 100 kB in size</span>
+<span class="n">dummy_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_dir</span><span class="p">,</span> <span class="s2">&quot;dummy.txt&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dummy_file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="mi">100000</span> <span class="c1"># in bytes</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;1&quot;</span> <span class="o">*</span> <span class="n">size</span><span class="p">)</span>
+
+<span class="c1"># Now use the subprocess command to run 7zip. Warning- all paths should be </span>
+<span class="c1"># enclosed in quotation marks just in case there are any spaces in the path</span>
+<span class="c1"># The &quot;a&quot; command given to 7z.exe means &quot;add to archive&quot;</span>
+<span class="n">archive_command</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&quot;</span><span class="si">{}</span><span class="s1">&quot; a &quot;</span><span class="si">{}</span><span class="s1">&quot; &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_7z</span><span class="p">,</span> <span class="n">dummy_out_path</span><span class="p">,</span> <span class="n">dummy_file_path</span><span class="p">)</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">archive_command</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Delete the original dummy file</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">dummy_file_path</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The actual line of command-line code that was called using subprocess above is:</p>
+<p><em>"C:\Program Files\7-Zip\7z.exe" a "C:\Temp\dummy.7z" "C:\Temp\dummy.txt"</em></p>
+<p>unless any of the default variables were changed. The "a" command given to 7z.exe is used to make an archive, and the first argument afterwards is the output location of the archive, and the second argument is the location of the original file. Check the path "C:\Temp\dummy.7z" and you will see the file you just created. Note that this path will be different if you changed the temp_dir or dummy_out_path variables above.</p>
+<p>There are two common problems that may be encountered here. First, the 7zip program may not always be added to the system PATH. It's up to you if you would like to do so, but if you don't know what modifying the PATH variable means, you should probably just specify the full path to the 7z program. This is usually something like "C:\Program Files\7-zip\7z.exe" on Windows, but you can check your default path by trying to re-install the 7zip program. Second, it appears that you may be able to only run one command-line version of 7zip at a time. If you are trying to run multiple command-line programs at once, or if you already have an unzip operation running, this code may not work on your system.</p>
+<p>Now, let's extract the archive that was created above.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The &quot;e&quot; command given to 7z.exe means &quot;extract from archive&quot;</span>
+<span class="c1"># WARNING- One of the most common mistakes is that there is NO space between the</span>
+<span class="c1"># -o flag and the actual output directory (e.g. it should look like: &quot;-oC:\Temp&quot;)</span>
+<span class="n">extract_command</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&quot;</span><span class="si">{}</span><span class="s1">&quot; x &quot;</span><span class="si">{}</span><span class="s1">&quot; -o&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_7z</span><span class="p">,</span> <span class="n">dummy_out_path</span><span class="p">,</span> <span class="n">temp_dir</span><span class="p">)</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">extract_command</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The actual line of command-line code that was called using subprocess above is:</p>
+<p><em>"C:\Program Files\7-Zip\7z.exe" x "C:\Temp\dummy.txt" -o"C:\Temp"</em></p>
+<p>Important note- there is no space in between the -o and "C:\Temp"; this is not a typo. Take a look at the "C:\Temp" directory and you will notice that the dummy.txt file has been successfully extracted from the dummy.7z file!</p>
+
+</div>
+</div>
+</div>
+ 
+
